@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knet-agents": {
+      "type": "http",
+      "url": "https://agents.knet.ai/mcp"
+    }
+  }
+}
