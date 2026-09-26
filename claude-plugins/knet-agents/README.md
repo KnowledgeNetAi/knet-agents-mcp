@@ -23,13 +23,13 @@ when prompted.
 
 ## 2. Add the skills
 
-**Claude.ai.** Download the skill `.zip` files from the [latest release](https://github.com/KnowledgeNetAi/claude-plugins/releases/latest) and upload each one under Settings →
+**Claude.ai.** Download the skill `.zip` files from the [latest release](https://github.com/KnowledgeNetAi/knet-agents-mcp/releases/latest) and upload each one under Settings →
 Capabilities → Skills. An organization admin can add them once for everyone.
 
 **Claude Code:**
 
 ```
-/plugin marketplace add KnowledgeNetAi/claude-plugins
+/plugin marketplace add KnowledgeNetAi/knet-agents-mcp
 /plugin install knet-agents@knowledgenet
 ```
 

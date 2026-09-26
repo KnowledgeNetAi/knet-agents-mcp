@@ -1,13 +1,18 @@
-# KnowledgeNet.ai Claude plugins
+# KNET Agents MCP
 
-Plugins and skills that help Claude work with KnowledgeNet.ai services.
+Integrations for the [KNET Agents](https://agents.knet.ai) MCP server
+(`https://agents.knet.ai/mcp`): LinkedIn profile, company, post and engagement
+data, company and people prospecting and enrichment, email verification, and
+KnowledgeNet warm-introduction paths.
 
-## knet-agents
+| Folder | What's in it |
+|---|---|
+| [`claude-plugins/`](claude-plugins/) | Claude Code plugins and Claude.ai skills |
 
-Teaches Claude to use the [KNET Agents](https://agents.knet.ai) MCP server well:
-LinkedIn profile, company, post and engagement data, company and people
-prospecting and enrichment, email verification, and KnowledgeNet
-warm-introduction paths.
+## Claude
+
+The `knet-agents` plugin teaches Claude the multi-step workflows, what each
+step costs, and the traps that waste credits.
 
 | Skill | What it does |
 |---|---|
@@ -19,7 +24,7 @@ warm-introduction paths.
 ### Claude Code
 
 ```
-/plugin marketplace add KnowledgeNetAi/claude-plugins
+/plugin marketplace add KnowledgeNetAi/knet-agents-mcp
 /plugin install knet-agents@knowledgenet
 ```
 
@@ -31,12 +36,12 @@ Claude first uses it.
 1. **Connect the server.** Settings → Connectors → Add custom connector →
    `https://agents.knet.ai/mcp`, then sign in.
 2. **Add the skills.** Download the `.zip` files from the
-   [latest release](https://github.com/KnowledgeNetAi/claude-plugins/releases/latest)
+   [latest release](https://github.com/KnowledgeNetAi/knet-agents-mcp/releases/latest)
    and upload each under Settings → Capabilities → Skills. An organization
    admin can add them once for everyone.
 
-### Pricing
+## Pricing
 
-Tools are priced in credits (1 credit = $0.01). Ask Claude to run
+Tools are priced in credits (1 credit = $0.01). Ask your AI client to run
 `knet_license` for the current price list or `knet_quota` for your balance.
 Both are free.

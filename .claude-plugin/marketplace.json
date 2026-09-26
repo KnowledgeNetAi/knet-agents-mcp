@@ -1,13 +1,16 @@
 {
   "name": "knowledgenet",
-  "owner": { "name": "KnowledgeNet.ai", "url": "https://knowledgenet.ai" },
+  "owner": {
+    "name": "KnowledgeNet.ai",
+    "url": "https://knowledgenet.ai"
+  },
   "metadata": {
-    "description": "Claude plugins from KnowledgeNet.ai"
+    "description": "KNET Agents integrations from KnowledgeNet.ai"
   },
   "plugins": [
     {
       "name": "knet-agents",
-      "source": "./plugins/knet-agents",
+      "source": "./claude-plugins/knet-agents",
       "description": "LinkedIn, company, and contact data, post-engagement mining, prospect lists, and warm-intro paths through the KNET Agents MCP server, with skills that teach Claude the workflows and keep credit spend low.",
       "version": "1.0.0",
       "category": "sales",
