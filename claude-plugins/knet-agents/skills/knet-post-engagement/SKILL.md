@@ -12,14 +12,14 @@ Prices below are in credits (1 credit = $0.01). Call `knet_license` for current 
 ## 1. Get the posts
 
 - **If the user gave a post URL**, skip to step 2. Any form works: `/posts/...`, `/feed/update/urn:li:activity:<id>`, or a bare `urn:li:activity:<id>`.
-- **If they gave a person**, call `linkedin_posts_get` with the profile URL (about 0.75 per page, newest posts first). Each post has `url`, `posted_at`, `text` and `engagement` counts.
+- **If they gave a person**, call `linkedin_posts_get` with the profile URL (about 0.46 per page, newest posts first). Each post has `url`, `posted_at`, `text` and `engagement` counts.
 - **Choose which posts to mine.** The engagement counts tell you what each post will cost before you spend anything. Prefer recent posts with real engagement, and ask the user if the choice isn't obvious (for example, "the last 5 posts" vs. "the one about the product launch").
 
 ## 2. Pull reactions and comments
 
 For each chosen post, call `linkedin_post_reactions` and/or `linkedin_post_comments` with the post URL.
 
-- **Page size and cost:** up to 100 people per page, about 0.35 per page.
+- **Page size and cost:** up to 100 people per page, about 0.46 per page.
 - **Paging:** keep going while `meta.has_more` is true, and stop there. A page past the end still bills.
 - **Comments vs. reactions:** comments are stronger signals than likes, and the text shows what the person cares about. If the user wants the most engaged people, comments alone are often enough.
 - **Replies** come nested inside `replies`.
@@ -27,8 +27,8 @@ For each chosen post, call `linkedin_post_reactions` and/or `linkedin_post_comme
 
 **Estimate first when the job is large.** Use this formula and quote one total:
 - (posts × pages per post) × 0.35
-- \+ 0.75 per shortlisted reactor profile
-- \+ 6 per person who gets an email (3 to enrich, 3 to validate)
+- \+ about 0.74 per shortlisted reactor profile
+- \+ 8 per person who gets an email (4 to enrich, 4 to validate)
 
 Tell the user the estimate before running anything over roughly 50 credits.
 
@@ -49,8 +49,8 @@ Tell the user the estimate before running anything over roughly 50 credits.
 
 Reactor URLs almost always look like `https://www.linkedin.com/in/ACoAAA...`, a member ID rather than a vanity slug. That changes the order of steps:
 
-- **Profile first, for reactors.** Call `linkedin_profile_get` with `provider: "lens"` (about 0.75), or `linkedin_profile_get_batch` for up to 10 at a time, also with `provider: "lens"`, since the batch tool's default provider is a different one. The Lens engine resolves member-ID URLs, and the returned profile's `url` is the person's real vanity URL. You get experience, location and education along the way.
-- **Email only after that.** `people_enrich` (3 each) cannot match a member-ID URL: the enrichment engine can't match one, so the tool rejects `/in/ACoAAA...` with a 400 rather than bill you for nothing. Pass the vanity `url` from the profile step.
+- **Profile first, for reactors.** Call `linkedin_profile_get` with `provider: "lens"` (about 0.74), or `linkedin_profile_get_batch` for up to 10 at a time, also with `provider: "lens"`, since the batch tool's default provider is a different one. The Lens engine resolves member-ID URLs, and the returned profile's `url` is the person's real vanity URL. You get experience, location and education along the way.
+- **Email only after that.** `people_enrich` (4 each) cannot match a member-ID URL: the enrichment engine can't match one, so the tool rejects `/in/ACoAAA...` with a 400 rather than bill you for nothing. Pass the vanity `url` from the profile step.
 - **Commenters** usually come with a normal vanity URL, so they can go straight to `people_enrich` if you don't need the full profile.
 - **Email is for the final list only.** Every enrichment costs, so run it just for the people the user will contact.
 - **Before anyone sends mail:** run `email_validate_batch` on the emails you found (3 each, up to 200 per call). Keep addresses with `deliverable: true`. Treat `risky: true` (catch-all domains, transient failures) as a judgment call, and drop anything with `toxic` or `disposable` set, or `status: "invalid"`.
@@ -63,7 +63,7 @@ Give the user a table with one row per person:
 |---|---|---|---|---|---|
 | … | … | … | Commented on 2 posts, liked 1 | "…short excerpt…" | URL |
 
-Sort by engagement strength: comments before likes, several posts before one. End with a one-line cost summary, for example: "Pulled 3 posts, 412 engagers, enriched 18: about 22 credits."
+Sort by engagement strength: comments before likes, several posts before one. End with a one-line cost summary, for example: "Pulled 3 posts, 412 engagers, enriched 18: about 29 credits."
 
 ## Things that go wrong
 

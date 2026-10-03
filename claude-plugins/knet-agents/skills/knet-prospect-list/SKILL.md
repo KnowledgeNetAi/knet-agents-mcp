@@ -7,7 +7,7 @@ description: Build a targeted B2B prospect or lead list (companies matching an i
 
 This turns an ideal-customer description into a list of companies and verified contacts. The main risk is a search that *looks* filtered but isn't, so the workflow checks for that before spending on enrichment.
 
-Prices are in credits (1 credit = $0.01): company and people search 1.2 per page, `people_enrich` 3, email validation 3. `knet_license` has current prices, and `knet_quota` shows the balance.
+Prices are in credits (1 credit = $0.01): company and people search 1.6 per page, `people_enrich` 4, email validation 4. `knet_license` has current prices, and `knet_quota` shows the balance.
 
 ## 1. Turn the request into filters
 
@@ -32,20 +32,20 @@ To guard against this:
 - **Run page 1 with `per_page` 25 first** and check `meta.total_entries`. A million-plus total for a narrow ideal customer profile means a filter was ignored. Zero for a broad one means an enum is wrong. Fix it and re-run before paging further.
 - **Check both arrays.** Results come back in `results` (the Atlas database) and `saved` (records already in the workspace). A match is in exactly one of them, so look at `meta.saved_count` before concluding a search found nothing.
 
-Then page (`page` 2, 3, … up to `meta.total_pages`, at 1.2 per page) until you have the number the user asked for.
+Then page (`page` 2, 3, … up to `meta.total_pages`, at 1.6 per page) until you have the number the user asked for.
 
 ## 3. People at the target companies
 
 If you searched companies first, find people in one of two ways:
 - **People search:** `people_search` filtered to those organizations plus titles or seniorities, or
-- **LinkedIn leadership:** `company_people_search` with each company's LinkedIn URL or `linkedin_uid` (from `organization_enrich`) and a short list of `titles`. It costs 0.75 per title per company, so keep titles few. Company names are rejected. Read `meta.actionable_hits`; anonymized hits can't be contacted.
+- **LinkedIn leadership:** `company_people_search` with each company's LinkedIn URL or `linkedin_uid` (from `organization_enrich`) and a short list of `titles`. It costs about 0.46 per title per company, so keep titles few. Company names are rejected. Read `meta.actionable_hits`; anonymized hits can't be contacted.
 
 ## 4. Enrich and verify only the final list
 
-1. `people_enrich` for each person you'll keep (3 each). Pass `linkedin_url` when you have it (most precise), else email, else `first_name` + `last_name` + `organization_domain`.
+1. `people_enrich` for each person you'll keep (4 each). Pass `linkedin_url` when you have it (most precise), else email, else `first_name` + `last_name` + `organization_domain`.
 2. `email_validate_batch` on every email (up to 200 per call, 3 each; duplicates are charged once). Keep `deliverable: true`. Mark `risky: true`, and drop `toxic`, `disposable` and `status: "invalid"`. If the balance runs out partway, the remaining addresses come back with status 402 and are not billed. Tell the user and resend after they top up.
 
-**Estimate before enriching.** People × 6 credits (enrich plus validate) adds up quickly. Confirm with the user before enriching more than about 25 people.
+**Estimate before enriching.** People × 8 credits (enrich plus validate) adds up quickly. Confirm with the user before enriching more than about 25 people.
 
 ## 5. Deliver
 
