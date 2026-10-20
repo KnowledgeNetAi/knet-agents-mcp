@@ -1,7 +1,7 @@
 {
   "name": "knet-agents",
-  "version": "1.0.1",
-  "description": "KNET Agents: LinkedIn, company, and contact data, post-engagement mining, prospect lists, and warm-intro paths, with skills that teach Claude the workflows and keep credit spend low.",
+  "version": "1.1.0",
+  "description": "KNET Agents: LinkedIn, company, and contact data, post-engagement mining, prospect lists, Reddit lead search, and warm-intro paths, with skills that teach Claude the workflows and keep credit spend low.",
   "author": { "name": "KnowledgeNet.ai", "url": "https://knowledgenet.ai" },
   "homepage": "https://agents.knet.ai",
   "keywords": ["linkedin", "sales", "prospecting", "enrichment", "knowledgenet"]
