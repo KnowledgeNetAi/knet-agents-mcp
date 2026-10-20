@@ -11,8 +11,8 @@
     {
       "name": "knet-agents",
       "source": "./claude-plugins/knet-agents",
-      "description": "LinkedIn, company, and contact data, post-engagement mining, prospect lists, and warm-intro paths through the KNET Agents MCP server, with skills that teach Claude the workflows and keep credit spend low.",
-      "version": "1.0.1",
+      "description": "LinkedIn, company, and contact data, post-engagement mining, prospect lists, Reddit lead search, and warm-intro paths through the KNET Agents MCP server, with skills that teach Claude the workflows and keep credit spend low.",
+      "version": "1.1.0",
       "category": "sales",
       "homepage": "https://agents.knet.ai"
     }
