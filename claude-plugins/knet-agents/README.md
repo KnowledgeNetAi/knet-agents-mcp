@@ -2,7 +2,8 @@
 
 Skills that teach Claude how to get the most out of the KNET Agents MCP server:
 LinkedIn profile, company, post and engagement data, company and people prospecting and
-enrichment, email verification, Reddit post search, and KnowledgeNet
+enrichment, email verification, Reddit post search, Google Maps places and
+reviews, and KnowledgeNet
 warm-introduction paths. They
 cover the multi-step workflows, what each step costs, and the traps that waste
 credits.
@@ -13,6 +14,7 @@ credits.
 | `knet-account-research` | Build a brief on a company: firmographics, leadership, verified contacts |
 | `knet-prospect-list` | Build a lead list from an ideal customer profile with verified emails |
 | `knet-reddit-leads` | Find people on Reddit asking for help you sell, with buying signals |
+| `knet-review-signals` | Find local businesses whose Google reviews describe a problem you fix, and who runs them |
 | `knet-warm-intros` | Find who in your network, or your team's, can introduce you (KnowledgeNet accounts) |
 
 ## 1. Connect the server
