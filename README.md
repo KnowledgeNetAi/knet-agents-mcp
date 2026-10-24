@@ -3,7 +3,7 @@
 Integrations for the [KNET Agents](https://agents.knet.ai) MCP server
 (`https://agents.knet.ai/mcp`): LinkedIn profile, company, post and engagement
 data, company and people prospecting and enrichment, email verification, Reddit
-post search, and KnowledgeNet warm-introduction paths.
+post search, Google Maps places and reviews, and KnowledgeNet warm-introduction paths.
 
 | Folder | What's in it |
 |---|---|
@@ -20,6 +20,7 @@ step costs, and the traps that waste credits.
 | `knet-account-research` | Builds a brief on a company: firmographics, leadership, verified contacts |
 | `knet-prospect-list` | Builds a lead list from an ideal customer profile, with verified emails |
 | `knet-reddit-leads` | Finds people on Reddit asking for help you sell, with buying signals |
+| `knet-review-signals` | Finds local businesses whose Google reviews describe a problem you fix, and who runs them |
 | `knet-warm-intros` | Finds who in your network, or your team's, can introduce you (KnowledgeNet accounts) |
 
 ### Claude Code
