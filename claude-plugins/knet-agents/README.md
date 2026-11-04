@@ -11,7 +11,7 @@ credits.
 | Skill | Use it to |
 |---|---|
 | `knet-post-engagement` | Find who liked or commented on LinkedIn posts and turn them into a qualified list |
-| `knet-account-research` | Build a brief on a company: firmographics, leadership, verified contacts |
+| `knet-account-research` | Build a brief on a company: firmographics, leadership, verified contacts, and direct phone numbers on request |
 | `knet-prospect-list` | Build a lead list from an ideal customer profile with verified emails |
 | `knet-reddit-leads` | Find people on Reddit asking for help you sell, with buying signals |
 | `knet-review-signals` | Find local businesses whose Google reviews describe a problem you fix, and who runs them |
@@ -43,3 +43,8 @@ Every tool is priced in credits (1 credit = $0.01). Ask Claude to run
 `knet_license` for the current price list, or `knet_quota` for your balance.
 Both are free. A cached result costs list price the first time you're served
 it and is free when you read it again.
+
+Direct phone numbers (`people_phone_reveal`) cost 50 credits per person when a
+number is found. They are off until the account owner turns them on at
+agents.knet.ai/app/me, and Claude asks you to approve the price before every
+reveal.

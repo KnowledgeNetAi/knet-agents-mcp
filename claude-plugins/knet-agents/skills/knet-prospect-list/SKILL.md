@@ -45,6 +45,8 @@ If you searched companies first, find people in one of two ways:
 1. `people_enrich` for each person you'll keep (4 each). Pass `linkedin_url` when you have it (most precise), else email, else `first_name` + `last_name` + `organization_domain`.
 2. `email_validate_batch` on every email (up to 200 per call, 3 each; duplicates are charged once). Keep `deliverable: true`. Mark `risky: true`, and drop `toxic`, `disposable` and `status: "invalid"`. If the balance runs out partway, the remaining addresses come back with status 402 and are not billed. Tell the user and resend after they top up.
 
+**Phone numbers are not part of a list build.** `people_phone_reveal` costs 50 credits per person found and needs the user's approval of each quote, so never run it across a list. If the user wants phones for a few people on the final list, quote each one, show the total, and reveal only those they approve. Report each number's `dnc_status`.
+
 **Estimate before enriching.** People × 8 credits (enrich plus validate) adds up quickly. Confirm with the user before enriching more than about 25 people.
 
 ## 5. Deliver
