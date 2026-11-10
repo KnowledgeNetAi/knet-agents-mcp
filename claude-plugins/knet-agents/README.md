@@ -48,3 +48,9 @@ Direct phone numbers (`people_phone_reveal`) cost 50 credits per person when a
 number is found. They are off until the account owner turns them on at
 agents.knet.ai/app/me, and Claude asks you to approve the price before every
 reveal.
+
+Personality profiles (`people_personality`) cost 200 credits per person when a
+profile is found and nothing when none is. Claude asks you to approve the price
+before every lookup. A profile is an estimate from public data, for tailoring
+the tone of outreach and meetings only, never for hiring or other decisions
+about a person.

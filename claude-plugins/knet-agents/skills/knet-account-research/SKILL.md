@@ -49,6 +49,18 @@ For each person the user actually wants to contact:
 
 If there's no LinkedIn URL, `people_enrich` also accepts `first_name` + `last_name` + `organization_domain`. That's more precise than `organization_name`, and the domain has to be a real domain.
 
+## 4b. Personality before outreach (optional)
+
+When the user is about to write to or meet one of these people and wants to match their style, offer a personality profile. Don't run it unasked.
+
+`people_personality` with the person's vanity `linkedin_url` (or their `email`, not both). Like phone reveal, it always takes two calls, and the user approves the cost in between:
+- First call (just the identifier): returns a quote (`quote_id`, `credits`, usually 200) and charges nothing. Tell the user the price and ask them to approve it.
+- Second call, only after they say yes: the same identifier plus `quote_id` and `approved_credits` equal to the quoted credits. Never approve on the user's behalf.
+- 200 credits per person when a profile is found, nothing when none is. A profile you already paid for comes back free with no quote.
+- A member-ID URL (`/in/ACoAAA...`) is rejected; resolve it with `linkedin_profile_get` (provider `"lens"`) first, as in step 4.
+
+Use `disc`, `how_to` (communicate, sell, meet, negotiating, following_up, ...) and `recommendations` to shape the draft or the meeting plan. The profile is an estimate from public data: use it to tailor tone only, never for hiring or other decisions about the person, and don't present it to anyone, including the person, as fact. Leave it out of the brief's table.
+
 ## 5. The brief
 
 Use this structure:
@@ -69,4 +81,5 @@ Use this structure:
 - Don't run every step when the user asked one question. "Who's the CEO of X?" is steps 1 and 3 only.
 - Enrich contacts only for people the user will actually reach out to.
 - Reveal phone numbers only when the user asks, one approved person at a time. Leave the column out otherwise.
+- Personality profiles cost 200 credits each: only for the one or two people the user is about to contact, and only with their approval.
 - Repeat lookups of cached data you've already paid for are free, so re-running a brief a week later mostly costs nothing.
